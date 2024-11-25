@@ -1,0 +1,202 @@
+% ./cv
+Enter input (type 'exit' to quit): 
+Input: 
+Count: 0 characters
+Producer: done
+Consumer: done
+Enter input (type 'exit' to quit): exit
+Parent: done
+% 
+%
+% ./cv
+Enter input (type 'exit' to quit): Hello World!
+Input: Hello World!
+Count: 12 characters
+Produced: H
+Produced: e
+Produced: l
+Produced: l
+Produced: o
+Produced:  
+Produced: W
+Produced: o
+Produced: r
+Produced: l
+Produced: d
+Produced: !
+Producer: done
+Consumed: H
+Consumed: e
+Consumed: l
+Consumed: l
+Consumed: o
+Consumed:  
+Consumed: W
+Consumed: o
+Consumed: r
+Consumed: l
+Consumed: d
+Consumed: !
+Consumer: done
+Enter input (type 'exit' to quit): exit
+Parent: done
+% 
+%  
+% 
+% ./cv
+Enter input (type 'exit' to quit): Learning new skills every day helps us grow smarter.
+Input: Learning new skills every day helps us grow smarte
+Count: 50 characters
+Produced: L
+Produced: e
+Produced: a
+Produced: r
+Produced: n
+Produced: i
+Produced: n
+Produced: g
+Produced:  
+Produced: n
+Produced: e
+Produced: w
+Produced:  
+Produced: s
+Produced: k
+Consumed: L
+Consumed: e
+Consumed: a
+Consumed: r
+Consumed: n
+Consumed: i
+Consumed: n
+Consumed: g
+Consumed:  
+Consumed: n
+Consumed: e
+Consumed: w
+Consumed:  
+Consumed: s
+Consumed: k
+Produced: i
+Produced: l
+Produced: l
+Produced: s
+Produced:  
+Produced: e
+Produced: v
+Produced: e
+Produced: r
+Produced: y
+Produced:  
+Produced: d
+Produced: a
+Produced: y
+Produced:  
+Consumed: i
+Consumed: l
+Consumed: l
+Consumed: s
+Consumed:  
+Consumed: e
+Consumed: v
+Consumed: e
+Consumed: r
+Consumed: y
+Consumed:  
+Consumed: d
+Consumed: a
+Consumed: y
+Consumed:  
+Produced: h
+Produced: e
+Produced: l
+Produced: p
+Produced: s
+Produced:  
+Produced: u
+Produced: s
+Produced:  
+Produced: g
+Produced: r
+Produced: o
+Produced: w
+Produced:  
+Produced: s
+Consumed: h
+Consumed: e
+Consumed: l
+Consumed: p
+Consumed: s
+Consumed:  
+Consumed: u
+Consumed: s
+Consumed:  
+Consumed: g
+Consumed: r
+Consumed: o
+Consumed: w
+Consumed:  
+Consumed: s
+Produced: m
+Produced: a
+Produced: r
+Produced: t
+Produced: e
+Producer: done
+Consumed: m
+Consumed: a
+Consumed: r
+Consumed: t
+Consumed: e
+Consumer: done
+Enter input (type 'exit' to quit): Dream big, work hard.
+Input: Dream big, work hard.
+Count: 21 characters
+Produced: D
+Produced: r
+Produced: e
+Produced: a
+Produced: m
+Produced:  
+Produced: b
+Produced: i
+Produced: g
+Produced: ,
+Produced:  
+Produced: w
+Produced: o
+Produced: r
+Produced: k
+Consumed: D
+Consumed: r
+Consumed: e
+Consumed: a
+Consumed: m
+Consumed:  
+Consumed: b
+Consumed: i
+Consumed: g
+Consumed: ,
+Consumed:  
+Consumed: w
+Consumed: o
+Consumed: r
+Consumed: k
+Produced:  
+Produced: h
+Produced: a
+Produced: r
+Produced: d
+Produced: .
+Producer: done
+Consumed:  
+Consumed: h
+Consumed: a
+Consumed: r
+Consumed: d
+Consumed: .
+Consumer: done
+Enter input (type 'exit' to quit): exit
+Parent: done
+% 
+% 
