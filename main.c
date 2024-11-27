@@ -1,33 +1,40 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <pthread.h>
-#include <string.h>
+// Name: Deepey Panchal
+// U-Number: U80305771
+// NetID: deepeypradippanchal
+// Description: TODO
 
-#define BUFFER_SIZE 15
+#include <stdio.h>                  // Standard input/output definitions
+#include <stdlib.h>                 // Standard library definitions
+#include <pthread.h>                // POSIX threads (pthreads) library contains the thread-related functions and macros.
+#include <string.h>                 // String manipulation functions
+
+// Define constants for buffer size and input size
+#define BUFFER_SIZE 15  // Maximum of 15 characters in the buffer
 #define INPUT_SIZE 51  // Maximum of 50 characters plus null terminator
 
+// Define a structure to hold shared buffer and synchronization variables
 typedef struct {
-    char buffer[BUFFER_SIZE];       // The shared buffer
-    int in;                         // Index for the producer
-    int out;                        // Index for the consumer
-    int count;                      // Number of items in the buffer
-    int producer_done;              // Flag to indicate producer is done
-    pthread_mutex_t mutex;          // Mutex lock for synchronization
-    pthread_cond_t not_empty;       // Condition variable for buffer not empty
-    pthread_cond_t not_full;        // Condition variable for buffer not full
-} shared_buffer_t;
-
+    char buffer[BUFFER_SIZE];       // The shared buffer to store characters
+    int in;                         // Index for the producer to insert
+    int out;                        // Index for the consumer to remove
+    int count;                      // Number of items in the buffer to consume
+    int producer_done;              // Flag to indicate producer is done to exit consumer
+    pthread_mutex_t mutex;          // Mutex lock for synchronization to access shared buffer
+    pthread_cond_t not_empty;       // Condition variable for buffer not empty to consume
+    pthread_cond_t not_full;        // Condition variable for buffer not full to produce
+} shared_buffer_t;                  // Typedef for shared buffer structure to use as a type
 shared_buffer_t shared_buffer;
 
 void* producer(void* arg) {
-    char* input = (char*) arg;
-    int i = 0;
-    char item;
+    char* input = (char*) arg;  // Cast the argument to a character pointer
+    int i = 0;                  // Index to iterate over the input string
+    char item;                  // Variable to store the current character being processed
 
-    while ((item = input[i]) != '\0') {
-        pthread_mutex_lock(&shared_buffer.mutex);
+    // Loop over the input string until the null terminator is reached
+    while ((item = input[i]) != '\0') {                 // Read the current character from the input string
+        pthread_mutex_lock(&shared_buffer.mutex);       // Lock the mutex to access the shared buffer
 
-        while (shared_buffer.count == BUFFER_SIZE) {
+        while (shared_buffer.count == BUFFER_SIZE) {    
             pthread_cond_wait(&shared_buffer.not_full, &shared_buffer.mutex);
         }
 
