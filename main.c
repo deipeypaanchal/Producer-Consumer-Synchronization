@@ -4,7 +4,7 @@
 #include <string.h>
 
 #define BUFFER_SIZE 15
-#define INPUT_SIZE 151  // Maximum of 150 characters plus null terminator
+#define INPUT_SIZE 51  // Maximum of 50 characters plus null terminator
 
 typedef struct {
     char buffer[BUFFER_SIZE];       // The shared buffer
@@ -100,11 +100,15 @@ int main() {
             continue;
         }
 
-        // Remove the newline character if present
+        // Check if the input was longer than 50 characters and discard extra characters
         size_t len = strlen(input_buffer);
         if (len > 0 && input_buffer[len - 1] == '\n') {
             input_buffer[len - 1] = '\0';
             len--;
+        } else {
+            // Input too long, discard the rest
+            int ch;
+            while ((ch = getchar()) != '\n' && ch != EOF);
         }
 
         if (strcmp(input_buffer, "exit") == 0) {
@@ -121,11 +125,19 @@ int main() {
         shared_buffer.out = 0;
         shared_buffer.count = 0;
         shared_buffer.producer_done = 0;
+        memset(shared_buffer.buffer, 0, sizeof(shared_buffer.buffer));
 
         pthread_t prod_thread, cons_thread;
 
+        // Duplicate the input buffer for the producer
+        char *producer_input = strdup(input_buffer);
+        if (producer_input == NULL) {
+            fprintf(stderr, "Memory allocation error\n");
+            exit(EXIT_FAILURE);
+        }
+
         // Create producer thread
-        if (pthread_create(&prod_thread, NULL, producer, (void*) input_buffer) != 0) {
+        if (pthread_create(&prod_thread, NULL, producer, (void*) producer_input) != 0) {
             fprintf(stderr, "Error creating producer thread\n");
             exit(EXIT_FAILURE);
         }
@@ -139,6 +151,8 @@ int main() {
         // Wait for threads to finish
         pthread_join(prod_thread, NULL);
         pthread_join(cons_thread, NULL);
+
+        free(producer_input);  // Free the duplicated input buffer
     }
 
     // Destroy synchronization primitives
